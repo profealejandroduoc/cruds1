@@ -1,15 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crud con Django</title>
-</head>
-<body>
-    <div>
-        <h1>
-            Este es el index
-        </h1>
+{% extends "crud/base.html" %}
+{% load static %}
+
+
+{% block contenido %}
+
+<div class="container">
+
+    
+
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h1>Crud con Django</h1>
+        <p>Con lluvia.....</p>
     </div>
-</body>
-</html>
+
+    <div class="border rounded mt-3 p-2">
+        <h3>Traer datos a la página</h3>
+        <p>{{fecha}}</p>
+        <p>{{msg}}</p>
+        <h5>Lista de Objetos</h5>
+        <ul>
+            <li>elemento 1</li>
+            <li>elemento 2</li>
+            <li>elemento 3</li>
+
+        </ul>
+
+        <p>Cantidad de elementos: {{items}}</p>
+
+
+    </div>
+</div>
+
+{% endblock contenido %}
