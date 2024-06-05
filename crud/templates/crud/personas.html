@@ -1,0 +1,44 @@
+{% extends "crud/base.html" %}
+{% load static %}
+
+
+{% block contenido %}
+
+<div class="container px-5 mt-4">
+    <h3>Registro de Personas</h3>
+    <!--['rut','nombre','apellido','foto','fnacto','correo','sexo']-->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>IMAGEN</th>
+                <th>RUT</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>F. NACIMIENTO</th>
+                <th>E-MAIL</th>
+                <th>SEXO</th>
+                <th>ACCIONES<th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in personas  %}
+            <tr>
+                <td><img src="{{p.foto.url}}" alt="foto" height="100"></td>
+                <td>{{p.rut}}</td>
+                <td>{{p.nombre}}</td>
+                <td>{{p.apellido}}</td>
+                <td>{{p.fnacto}}</td>
+                <td>{{p.correo}}</td>
+                <td>{{p.sexo}}</td>
+                <td><a href="{% url "detallepersona" p.rut %}" role="button" class="btn btn-info btn-sm text-light">Ver detalle</a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+
+
+</div>
+
+{% endblock contenido %}

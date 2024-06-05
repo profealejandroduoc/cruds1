@@ -19,9 +19,9 @@
         <p>{{msg}}</p>
         <h5>Lista de Objetos</h5>
         <ul>
-            <li>elemento 1</li>
-            <li>elemento 2</li>
-            <li>elemento 3</li>
+            {% for i in lista %}
+                <li>{{i}}</li>
+            {% endfor %}
 
         </ul>
 

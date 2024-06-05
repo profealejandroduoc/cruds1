@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from datetime import date
+from .models import Persona
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def index(request):
@@ -14,7 +16,21 @@ def index(request):
         "lista":lista,
         "items":elementos
     }
-
-
-
     return render(request,'crud/index.html', datos)
+
+def personas(request):
+    people=Persona.objects.all() #queryset
+    
+    datos={
+        "personas":people
+    }
+    return render(request,'crud/personas.html', datos)
+
+def detallepersona(request,id):
+    persona=get_object_or_404(Persona,rut=id)
+
+    datos={
+        "persona":persona
+    }
+
+    return render(request,'crud/detallepersona.html',datos)
