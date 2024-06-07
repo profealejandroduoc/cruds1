@@ -26,6 +26,11 @@ def personas(request):
     }
     return render(request,'crud/personas.html', datos)
 
+def crearpersona(request):
+
+    return render(request,'crud/crearpersona.html')
+
+
 def detallepersona(request,id):
     persona=get_object_or_404(Persona,rut=id)
 

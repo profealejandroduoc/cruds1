@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, personas,detallepersona
+from .views import index, personas,detallepersona, crearpersona
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -7,7 +7,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('',index,name='index'),
     path('personas/',personas, name='personas'),
-    path('detallepersona/<id>',detallepersona,name='detallepersona')
+    path('detallepersona/<id>',detallepersona,name='detallepersona'),
+    path('crearpersona/',crearpersona,name='crearpersona')
 ]
 
 if settings.DEBUG:
