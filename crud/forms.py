@@ -5,7 +5,7 @@ from .enumeraciones import *
 class PersonaForm(forms.ModelForm):
 
     rut=forms.CharField(help_text="Ingrese rut sin puntos y con guión")
-    fnacto=forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    fnacto=forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de Nacimiento")
     
     class Meta:
         model = Persona

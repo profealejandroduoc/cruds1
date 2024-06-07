@@ -9,7 +9,7 @@ class Persona(models.Model):
     rut=models.CharField(max_length=10, primary_key=True)
     nombre=models.CharField(max_length=50, null=False)
     apellido=models.CharField(max_length=50, null=False)
-    fnacto=models.DateField(verbose_name="Fecha de Nacimiento", null=False)
+    fnacto=models.DateField("Fecha de Nacimiento", null=False)
     correo=models.EmailField(verbose_name='E-mail')
     sexo=models.CharField(max_length=1,choices=TIPO_SEXO)
     foto=models.ImageField(upload_to='personas',null=True)
