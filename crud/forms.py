@@ -10,3 +10,13 @@ class PersonaForm(forms.ModelForm):
     class Meta:
         model = Persona
         fields = ['rut','nombre','apellido','foto','fnacto','correo','sexo']
+
+
+class UpdatePersonaForm(forms.ModelForm):
+
+
+    fnacto=forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de Nacimiento")
+    
+    class Meta:
+        model = Persona
+        fields = ['nombre','apellido','foto','fnacto','correo','sexo']

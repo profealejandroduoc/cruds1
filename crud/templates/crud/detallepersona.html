@@ -35,9 +35,14 @@
 
                   {% endif %}
                  
-                  
+                  <div class="mt-3">
+                    <a href={% url "modificar" persona.rut %} role="button" class="btn btn-warning text-light">Modificar</a>
+                    <a href={% url "eliminar" persona.rut %} role="button" class="btn btn-danger text-light">Eliminar</a>
+                    <a href='{% url "personas" %}' role='button' class="btn btn-light border">Volver</a>
+                  </div> 
                 </div>
               </div>
+             
 
 
 
