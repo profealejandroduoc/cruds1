@@ -3,6 +3,8 @@ from datetime import date
 from .models import Persona
 from django.shortcuts import get_object_or_404, redirect
 from .forms import PersonaForm, UpdatePersonaForm
+from os import remove, path
+from django.conf import settings
 
 # Create your views here.
 def index(request):
@@ -81,9 +83,13 @@ def eliminar(request,id):
     persona=get_object_or_404(Persona, rut=id)
     
     if request.method=="POST":
+        
+        #from os import remove, path
+        #from django.conf import settings
+        remove(path.join(str(settings.MEDIA_ROOT).replace('/media',''))+persona.foto.url)
         persona.delete()
         return redirect(to="personas")
-    
+        
     datos={
         "persona":persona
     }
