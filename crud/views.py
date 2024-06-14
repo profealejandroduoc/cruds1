@@ -5,6 +5,13 @@ from django.shortcuts import get_object_or_404, redirect
 from .forms import PersonaForm, UpdatePersonaForm
 from os import remove, path
 from django.conf import settings
+from django.contrib.auth import logout
+from django.contrib.auth.models import User
+
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect(to='index')
 
 # Create your views here.
 def index(request):
@@ -95,3 +102,4 @@ def eliminar(request,id):
     }
     
     return render(request,'crud/eliminar.html', datos)
+
