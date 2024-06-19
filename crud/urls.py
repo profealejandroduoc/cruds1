@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, personas,detallepersona, crearpersona, modificar,eliminar,cerrar_sesion
+from .views import index, personas,detallepersona, crearpersona, modificar,eliminar,cerrar_sesion,crearcuenta
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -11,7 +11,8 @@ urlpatterns = [
     path('crearpersona/',crearpersona,name='crearpersona'),
     path('modificar/<id>',modificar,name='modificar'),
     path('eliminar/<id>',eliminar, name='eliminar'),
-    path('cerrar_sesion',cerrar_sesion, name='cerrar_sesion')
+    path('cerrar_sesion',cerrar_sesion, name='cerrar_sesion'),
+    path('crearcuenta/', crearcuenta, name='crearcuenta'),
     
 ]
 

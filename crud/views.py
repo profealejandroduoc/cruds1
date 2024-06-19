@@ -9,6 +9,10 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
 
+
+def crearcuenta(request):
+    return render(request,'registration/crearcuenta.html')
+
 def cerrar_sesion(request):
     logout(request)
     return redirect(to='index')
