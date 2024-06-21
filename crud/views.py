@@ -2,16 +2,26 @@ from django.shortcuts import render
 from datetime import date
 from .models import Persona
 from django.shortcuts import get_object_or_404, redirect
-from .forms import PersonaForm, UpdatePersonaForm
+from .forms import PersonaForm, UpdatePersonaForm, UserForm
 from os import remove, path
 from django.conf import settings
 from django.contrib.auth import logout
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 
 
 
 def crearcuenta(request):
-    return render(request,'registration/crearcuenta.html')
+    form=UserForm()
+    datos={
+        "form":form
+    }
+
+    if request.method=="POST":
+        form=UserForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            
+    return render(request,'registration/crearcuenta.html', datos)
 
 def cerrar_sesion(request):
     logout(request)

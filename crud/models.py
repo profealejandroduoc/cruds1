@@ -1,6 +1,11 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from .enumeraciones import *
+from django.contrib.auth.models import AbstractUser
+
+class User(AbstractUser):
+    rut=models.CharField(max_length=10, null=True)
+    direccion=models.CharField(max_length=500, null=True)
 
 
 

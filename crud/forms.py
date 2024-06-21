@@ -1,6 +1,13 @@
 from django import forms
-from .models import Persona
+from .models import Persona, User
 from .enumeraciones import *
+from django.contrib.auth.forms import UserCreationForm
+
+class UserForm(UserCreationForm):
+    
+    class Meta:
+        model=User
+        fields=['username','rut','first_name','last_name','email','direccion','password1','password2']
 
 class PersonaForm(forms.ModelForm):
 
