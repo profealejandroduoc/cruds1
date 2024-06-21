@@ -1,6 +1,18 @@
 from django import forms
-from .models import Persona
+from .models import Persona, Perfil
 from .enumeraciones import *
+from django.contrib.auth.forms import UserCreationForm
+
+class UserForm(UserCreationForm):
+    pass
+
+class PerfilForm(forms.ModelForm):
+
+    class Meta:
+        model=Perfil
+        fields=['telefono', 'direccion']
+
+
 
 class PersonaForm(forms.ModelForm):
 

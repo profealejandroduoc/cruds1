@@ -1,8 +1,14 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from .enumeraciones import *
+from django.contrib.auth.models import User
 
 
+
+class Perfil(models.Model):
+    usuario=models.OneToOneField(User, related_name='usuario', on_delete=models.CASCADE)
+    telefono=models.CharField(max_length=9, null=True)
+    direccion=models.CharField(max_length=500, null=False)
 
 # Create your models here.
 class Persona(models.Model):

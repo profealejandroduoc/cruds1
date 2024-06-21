@@ -1,17 +1,70 @@
 from django.shortcuts import render
 from datetime import date
-from .models import Persona
+from .models import Persona, Perfil
 from django.shortcuts import get_object_or_404, redirect
-from .forms import PersonaForm, UpdatePersonaForm
+from .forms import PersonaForm, UpdatePersonaForm, UserForm, PerfilForm
 from os import remove, path
 from django.conf import settings
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from django.contrib import messages
 
+
+def perfil(request):
+    form=PerfilForm()
+    usr=request.user
+    print("EL ID", usr.id)
+
+    datos={
+        "form":form
+    }
+
+
+ 
+    existe=Perfil.objects.filter(usuario=usr).exists()
+    print(existe)
+   
+
+    if request.method=="POST":
+        form=PerfilForm(data=request.POST)
+        if form.is_valid():
+            #form.save()
+            if Perfil.objects.filter(usuario=usr).exists():
+                perfil=get_object_or_404(Perfil, usuario=usr)
+                #cargar datos al prinicpio de la página
+            else:
+                perfil=Perfil()
+
+            perfil.usuario_id=int(usr.id)
+            perfil.telefono=form.cleaned_data["telefono"]
+            perfil.direccion=form.cleaned_data["direccion"]
+            perfil.save()
+
+            datos["alerta"]="Datos modificados exitosamente"
+                
+
+   
+    return render(request,'crud/perfil.html', datos)
 
 
 def crearcuenta(request):
-    return render(request,'registration/crearcuenta.html')
+    form=UserForm()
+
+    if request.method=="POST":
+        form=UserForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            #mejor crear el perfil
+            #perfil=Perfil()
+            #perfil.usuario=form.cleaned_data["username"]
+            #perfil.save()
+
+            return redirect(to="login")
+
+    datos={
+        "form":form
+    }
+    return render(request,'registration/crearcuenta.html', datos)
 
 def cerrar_sesion(request):
     logout(request)

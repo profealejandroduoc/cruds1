@@ -31,7 +31,7 @@
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="">Bienvenido <strong>{{user.username}}</strong></a>
+                    <a class="nav-link" href="{% url "perfil" %}">Bienvenido <strong>{{user.username}}</strong><span class="badge bg-secondary">New</span></h6></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a>
